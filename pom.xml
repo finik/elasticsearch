@@ -1,10 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>my.elasticsearch</groupId>
-  <artifactId>elasticsearch</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <modules>
-  	<module>custom-scripts</module>
-  </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>my.elasticsearch</groupId>
+	<artifactId>elasticsearch</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>custom-scripts</module>
+	</modules>
+	
+	<properties>
+		<compileSource.version>1.7</compileSource.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<elasticsearch.version>1.3.4</elasticsearch.version>
+	</properties>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${compileSource.version}</source>
+						<target>${compileSource.version}</target>
+						<compilerArgument>-Xlint:all</compilerArgument>
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>	
+	</build>	
 </project>

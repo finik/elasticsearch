@@ -1,7 +1,7 @@
 /********************************************************************
- * File Name:    AcceptDistinctDocumentScriptFilterFactory.java
+ * File Name:    DistinctDocumentsSortScriptFactory.java
  *
- * Date Created: Jan 8, 2015
+ * Date Created: Jan 25, 2015
  *
  * ------------------------------------------------------------------
  * 
@@ -9,18 +9,19 @@
  *
  *******************************************************************/
 
-package my.elasticsearch.scripts.filters;
+package my.elasticsearch.distinctdocuments.search;
 
 import java.util.Map;
 
 import org.elasticsearch.script.ExecutableScript;
 import org.elasticsearch.script.NativeScriptFactory;
   
-public final class AcceptDistinctDocumentScriptFilterFactory implements NativeScriptFactory
+public class DistinctDocumentsSortScriptFactory implements NativeScriptFactory
 {
-  public ExecutableScript newScript(final Map<String, Object> parameters)
+  @Override
+  public ExecutableScript newScript(Map<String, Object> parameters)
   {
-    return new AcceptDistinctDocumentScriptFilter(parameters);
+    return new DistinctDocumentsSortScript(parameters);
   }
 }
 

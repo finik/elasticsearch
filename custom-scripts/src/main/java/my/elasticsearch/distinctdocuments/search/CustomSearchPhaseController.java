@@ -26,15 +26,16 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.util.BigArrays;
 import org.elasticsearch.common.util.concurrent.AtomicArray;
 import org.elasticsearch.common.util.concurrent.AtomicArray.Entry;
+import org.elasticsearch.script.ScriptService;
 import org.elasticsearch.search.controller.SearchPhaseController;
 import org.elasticsearch.search.query.QuerySearchResultProvider;
   
 public class CustomSearchPhaseController extends SearchPhaseController
 {
   @Inject
-  public CustomSearchPhaseController(final Settings settings, final CacheRecycler cacheRecycler, final BigArrays bigArrays)
+  public CustomSearchPhaseController(final Settings settings, final CacheRecycler cacheRecycler, final BigArrays bigArrays, final ScriptService scriptService)
   {
-    super(settings, cacheRecycler, bigArrays);
+    super(settings, cacheRecycler, bigArrays, scriptService);
   }
   
   @Override

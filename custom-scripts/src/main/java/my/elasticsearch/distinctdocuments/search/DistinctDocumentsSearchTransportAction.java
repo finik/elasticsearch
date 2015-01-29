@@ -19,6 +19,7 @@ import org.elasticsearch.action.search.type.TransportSearchDfsQueryAndFetchActio
 import org.elasticsearch.action.search.type.TransportSearchDfsQueryThenFetchAction;
 import org.elasticsearch.action.search.type.TransportSearchQueryAndFetchAction;
 import org.elasticsearch.action.search.type.TransportSearchScanAction;
+import org.elasticsearch.action.support.ActionFilters;
 import org.elasticsearch.action.support.TransportAction;
 import org.elasticsearch.cluster.ClusterService;
 import org.elasticsearch.common.inject.Inject;
@@ -36,11 +37,12 @@ public class DistinctDocumentsSearchTransportAction extends TransportAction<Dist
       TransportSearchDfsQueryAndFetchAction dfsQueryAndFetchAction,
       TransportSearchQueryAndFetchAction queryAndFetchAction,
       TransportSearchScanAction scanAction,
-      TransportSearchCountAction countAction)
+      TransportSearchCountAction countAction,
+      ActionFilters actionFilters)
   {
-    super(settings, DistinctDocumentsSearchClientAction.NAME, threadPool);
+    super(settings, DistinctDocumentsSearchClientAction.NAME, threadPool, actionFilters);
     
-    this.transportSearchAction = new TransportSearchAction(settings, threadPool, transportService, clusterService, dfsQueryThenFetchAction, queryThenFetchAction, dfsQueryAndFetchAction, queryAndFetchAction, scanAction, countAction);
+    this.transportSearchAction = new TransportSearchAction(settings, threadPool, transportService, clusterService, dfsQueryThenFetchAction, queryThenFetchAction, dfsQueryAndFetchAction, queryAndFetchAction, scanAction, countAction, actionFilters);
   }
   
   @Override
